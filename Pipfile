@@ -10,6 +10,7 @@ gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
 python-dateutil = "*"
+django-admin-interface = "*"
 
 [dev-packages]
 

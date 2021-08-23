@@ -29,10 +29,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'doggy-book.herokuapp.com']
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'  # only if django version >= 3.0
 
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,7 +130,7 @@ STATIC_URL = '/static/'
 # location where django collect all static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # location where you will store your static files
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'project_name/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'server/static')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
