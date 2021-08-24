@@ -39,7 +39,7 @@ class DogAdmin(admin.ModelAdmin):
 
 @admin.register(Vaccine)
 class VaccineAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'dog', 'time', 'status')
+    list_display = ('__str__', 'dog', 'time', 'completed')
     ordering = ('-time',)
     list_filter = ("dog", )
 
@@ -53,6 +53,11 @@ class VaccineAdmin(admin.ModelAdmin):
         if db_field.name == "dog":
             kwargs["queryset"] = Dog.objects.filter(owners=request.user)
         return super(VaccineAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+
+    def completed(self, obj):
+        return obj.status == 'Done'
+    completed.boolean = True
+
 
 
 admin.site.index_title = ''                 # default: "Site administration"
