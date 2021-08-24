@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from app import views
+
+app_name = 'app'
 
 urlpatterns = [
+    path(
+        '<int:vaccine_id>/send-invite',
+        views.send_vaccine_invite,
+        name='send-invite'
+    ),
     path('', admin.site.urls),
 ]

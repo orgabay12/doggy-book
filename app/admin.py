@@ -39,8 +39,8 @@ class DogAdmin(admin.ModelAdmin):
 
 @admin.register(Vaccine)
 class VaccineAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'dog', 'date', 'status')
-    ordering = ('-date',)
+    list_display = ('__str__', 'dog', 'time', 'status')
+    ordering = ('-time',)
     list_filter = ("dog", )
 
     def get_queryset(self, request):
