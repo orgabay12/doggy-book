@@ -11,6 +11,7 @@ whitenoise = "*"
 dj-database-url = "*"
 python-dateutil = "*"
 django-admin-interface = "*"
+django-environ = "*"
 
 [dev-packages]
 

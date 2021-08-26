@@ -4,13 +4,14 @@ from django.shortcuts import redirect, render
 
 from app.models import Vaccine
 from app.utils import send_event
+from server import settings
 
 
 @staff_member_required
 def send_vaccine_invite(request, vaccine_id):
     vaccine = Vaccine.objects.get(id=vaccine_id)
-    login_address = "doggybookapp@gmail.com"
-    password = "Yeswecan2015"
+    login_address = settings.EMAIL
+    password = settings.EMAIL_PASSWORD
     attendees = [v.username for v in vaccine.dog.owners.all()]
     sender_name = "doggybook"
     subject = f"{vaccine.type} vaccine for {vaccine.dog}"

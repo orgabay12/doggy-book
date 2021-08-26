@@ -11,28 +11,33 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 import dj_database_url
+import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+ENV_FILE = os.path.join(BASE_DIR, '.env')
+
+env = environ.Env()
+environ.Env.read_env(env_file=ENV_FILE)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&b(y2yv_&h*b-trb2qm^r3khbz#c2jw#lq^5gfva+cg=ynef2f'
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'doggy-book.herokuapp.com']
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'  # only if django version >= 3.0
 
-# Application definition
+EMAIL = env('EMAIL')
+EMAIL_PASSWORD = env('PASS')
 
+# Application definition
 INSTALLED_APPS = [
     'admin_interface',
     'colorfield',
