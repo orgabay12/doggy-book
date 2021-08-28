@@ -60,4 +60,5 @@ class VaccineAdmin(admin.ModelAdmin):
 
 
 
+admin.site.site_title = "Doggy Book"
 admin.site.index_title = ''                 # default: "Site administration"
